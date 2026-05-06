@@ -1,0 +1,5 @@
+smiles zinc_id
+O=C(NN1C(=O)CSC1=S)C(=O)NN1C(=O)CSC1=S 3238237
+CCNC(=S)N1CCN(CCNC=C2C(=O)NC(=O)NC2=O)CC1 19359412
+O=C(O[C@@H]([C@H](O)C(=O)O)[C@H](O)[C@@H](O)C(=O)O)c1cc(O)c(O)c(O)c1 2060993664
+[N-]=[N+]=N[C@@H]1O[C@H](CO)[C@@H](O[C@@H]2O[C@H](CO)[C@H](O)[C@H](O)[C@H]2O)[C@H](O)[C@H]1O 36423964

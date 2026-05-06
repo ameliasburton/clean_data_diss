@@ -1,0 +1,14 @@
+smiles zinc_id
+O=[N+]([O-])c1cc(N[C@@H]2OC[C@H](O)[C@@H](O)[C@H]2O)ccc1S(=O)(=O)O 108519777
+O=[N+]([O-])c1cc(N[C@@H]2OC[C@H](O)[C@H](O)[C@H]2O)ccc1S(=O)(=O)O 245239825
+CCOC(=O)c1nnn(-c2nonc2N)c1Cn1cnc([N+](=O)[O-])n1 2189013
+O=[N+]([O-])c1cc(N[C@@H]2OC[C@H](O)[C@@H](O)[C@@H]2O)ccc1S(=O)(=O)O 226939768
+O=[N+]([O-])c1cc(N[C@H]2OC[C@@H](O)[C@H](O)[C@H]2O)ccc1S(=O)(=O)O 12320972
+COCCn1c(N)c(C(=O)Cn2cc([N+](=O)[O-])ccc2=O)c(=O)[nH]c1=O 12914968
+CC(=O)O[C@H](CC(=O)N[C@@H](CCCNC(=N)N)C(=O)O)C[N+](C)(C)C 3783961
+O=[N+]([O-])c1cc(N[C@@H]2OC[C@H](O)[C@H](O)[C@@H]2O)ccc1S(=O)(=O)O 245239827
+O=[N+]([O-])c1cc(N[C@@H]2OC[C@@H](O)[C@H](O)[C@H]2O)ccc1S(=O)(=O)O 12320971
+CNC(=O)C(=O)NC[C@H]1OCCN1S(=O)(=O)c1ccc([N+](=O)[O-])cc1 12080624
+O=c1[nH]c(=O)n([C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)cc1[N+](=O)[O-] 205346095
+Cn1[nH]c(=O)c2c(c1=O)c1c(=O)[nH]n(C)c(=O)c1c1c(=O)[nH]n(C)c(=O)c21 256055642
+CNC(=O)C(=O)NC[C@@H]1OCCN1S(=O)(=O)c1ccc([N+](=O)[O-])cc1 8684066

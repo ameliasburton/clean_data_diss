@@ -1,0 +1,6 @@
+Smiles,pChEMBL_Value,Molecule ID
+CCO,5.0,TEST1
+CC(=O)O,6.0,TEST2
+c1ccccc1,4.5,TEST3
+CCN,5.5,TEST4
+C1CCCCC1,5.2,TEST5
