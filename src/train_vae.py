@@ -614,6 +614,6 @@ if __name__ == "__main__":
     parser.add_argument("--ligand-code", default="W2R", help="Ligand code used for pocket extraction")
 
     parser.add_argument("--output", default="models/best_graphvae.pth", help="Final fine-tuned checkpoint path")
-    parser.add_argument("--log-dir", default="logs_vae", help="TensorBoard log directory")
+    parser.add_argument("--log-dir", default="logs", help="TensorBoard log directory")
 
     main(parser.parse_args())
