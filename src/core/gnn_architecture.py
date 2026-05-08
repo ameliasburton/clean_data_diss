@@ -15,7 +15,7 @@ class EGFR_GNN_Regressor(nn.Module):
     def __init__(
         self,
         node_features: int = 6,
-        edge_features: int = 4,
+        edge_features: int = 5,
         global_features: int = 2,
         hidden_dim: int = 128,
         output_dim: int = 1,
@@ -57,9 +57,20 @@ class EGFR_GNN_Regressor(nn.Module):
         batch: torch.Tensor,
         edge_attr: Optional[torch.Tensor] = None,
         global_features: Optional[torch.Tensor] = None,
+        pos: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
         if edge_attr is None:
             raise ValueError("edge_attr is required for EGFR_GNN_Regressor")
+
+        # Calculate 3D Euclidean distances if pos is provided
+        if pos is not None and edge_index.shape[1] > 0:
+            src, dst = edge_index[0], edge_index[1]
+            distances = torch.norm(pos[src] - pos[dst], dim=1, keepdim=True)
+            # Normalize distances to [0, 1] range (typical molecular bonds: 1-3 Å)
+            distances = distances / 3.0
+            distances = torch.clamp(distances, 0, 1)
+            # Concatenate normalized distance to edge attributes
+            edge_attr = torch.cat([edge_attr, distances], dim=1)
 
         x = self.node_encoder(x)
         edge_attr = self.edge_encoder(edge_attr)
