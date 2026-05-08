@@ -8,7 +8,7 @@ from typing import Optional
 import torch
 import torch.nn.functional as F
 from torch import nn
-from torch_geometric.nn import GINEConv, global_mean_pool
+from torch_geometric.nn import GINEConv, global_mean_pool, global_max_pool
 
 
 class EGFR_GNN_Regressor(nn.Module):
@@ -40,8 +40,9 @@ class EGFR_GNN_Regressor(nn.Module):
 
         self.dropout = nn.Dropout(dropout)
         self.global_features = global_features
+        # Multi-strategy pooling: concatenate mean + max (2 * hidden_dim) + global features
         self.mlp = nn.Sequential(
-            nn.Linear(hidden_dim + global_features, hidden_dim),
+            nn.Linear(2 * hidden_dim + global_features, hidden_dim),
             nn.ReLU(),
             nn.Dropout(dropout),
             nn.Linear(hidden_dim, hidden_dim // 2),
@@ -80,12 +81,15 @@ class EGFR_GNN_Regressor(nn.Module):
             x = F.relu(x)
             x = self.dropout(x)
 
-        graph_emb = global_mean_pool(x, batch)
+        # Multi-strategy pooling: concatenate mean + max for robustness
+        graph_emb_mean = global_mean_pool(x, batch)
+        graph_emb_max = global_max_pool(x, batch)
+        graph_emb = torch.cat([graph_emb_mean, graph_emb_max], dim=1)
 
         if global_features is None:
-            global_features = graph_emb.new_zeros((graph_emb.size(0), self.global_features))
+            global_features = graph_emb_mean.new_zeros((graph_emb_mean.size(0), self.global_features))
         else:
-            global_features = global_features.view(graph_emb.size(0), -1).to(graph_emb.dtype)
+            global_features = global_features.view(graph_emb_mean.size(0), -1).to(graph_emb_mean.dtype)
 
         out = torch.cat([graph_emb, global_features], dim=-1)
         out = self.mlp(out)
