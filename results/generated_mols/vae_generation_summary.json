@@ -1,0 +1,57 @@
+{
+  "phase": "VAE_Generative_Sampling",
+  "n_generated": 8,
+  "model_path": "/Users/ameliaburton/Downloads/clean data/clean_data_diss/models/zinc_pretrained_graphvae.pth",
+  "latent_dim": 64,
+  "max_nodes": 30,
+  "samples": [
+    {
+      "idx": 1,
+      "z_mean": -0.10667949914932251,
+      "z_std": 0.9683285355567932,
+      "n_nodes": 50
+    },
+    {
+      "idx": 2,
+      "z_mean": -0.069218710064888,
+      "z_std": 0.9329770803451538,
+      "n_nodes": 50
+    },
+    {
+      "idx": 3,
+      "z_mean": 0.05032583698630333,
+      "z_std": 0.9520062208175659,
+      "n_nodes": 50
+    },
+    {
+      "idx": 4,
+      "z_mean": 0.04923045635223389,
+      "z_std": 1.1059165000915527,
+      "n_nodes": 50
+    },
+    {
+      "idx": 5,
+      "z_mean": -0.21411123871803284,
+      "z_std": 1.0307364463806152,
+      "n_nodes": 50
+    },
+    {
+      "idx": 6,
+      "z_mean": -0.1127481758594513,
+      "z_std": 1.1631181240081787,
+      "n_nodes": 50
+    },
+    {
+      "idx": 7,
+      "z_mean": -0.04059756547212601,
+      "z_std": 0.9566667079925537,
+      "n_nodes": 50
+    },
+    {
+      "idx": 8,
+      "z_mean": -0.20537656545639038,
+      "z_std": 0.9449283480644226,
+      "n_nodes": 50
+    }
+  ]
+}
