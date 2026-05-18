@@ -20,7 +20,7 @@ class EGFR_GNN_Regressor(nn.Module):
         hidden_dim: int = 128,
         output_dim: int = 1,
         num_layers: int = 4,
-        dropout: float = 0.2,
+        dropout_rate: float = 0.3,
     ):
         super().__init__()
         if num_layers < 1:
@@ -38,16 +38,14 @@ class EGFR_GNN_Regressor(nn.Module):
             )
             self.convs.append(GINEConv(mlp))
 
-        self.dropout = nn.Dropout(dropout)
+        self.dropout_rate = dropout_rate
         self.global_features = global_features
         # Multi-strategy pooling: concatenate mean + max (2 * hidden_dim) + global features
         self.mlp = nn.Sequential(
             nn.Linear(2 * hidden_dim + global_features, hidden_dim),
             nn.ReLU(),
-            nn.Dropout(dropout),
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.ReLU(),
-            nn.Dropout(dropout),
             nn.Linear(hidden_dim // 2, output_dim),
         )
 
@@ -79,7 +77,7 @@ class EGFR_GNN_Regressor(nn.Module):
         for conv in self.convs:
             x = conv(x, edge_index, edge_attr)
             x = F.relu(x)
-            x = self.dropout(x)
+            x = F.dropout(x, p=self.dropout_rate, training=self.training)
 
         # Multi-strategy pooling: concatenate mean + max for robustness
         graph_emb_mean = global_mean_pool(x, batch)
@@ -92,6 +90,7 @@ class EGFR_GNN_Regressor(nn.Module):
             global_features = global_features.view(graph_emb_mean.size(0), -1).to(graph_emb_mean.dtype)
 
         out = torch.cat([graph_emb, global_features], dim=-1)
+        out = F.dropout(out, p=self.dropout_rate, training=self.training)
         out = self.mlp(out)
         return out.view(-1)
 
