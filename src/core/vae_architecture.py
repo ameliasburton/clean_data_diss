@@ -14,7 +14,7 @@ from torch_geometric.nn import GINEConv, global_mean_pool
 class GraphEncoder(nn.Module):
     def __init__(
         self,
-        node_features: int = 6,
+        node_features: int = 8,
         edge_features: int = 4,
         global_features: int = 2,
         hidden_dim: int = 128,
@@ -79,7 +79,7 @@ class GraphDecoder(nn.Module):
         hidden_dim: int = 128,
         pocket_dim: int = 128,
         max_nodes: int = 50,
-        node_features: int = 6,
+        node_features: int = 8,
         edge_features: int = 4,
         dropout: float = 0.2,
         use_pocket_conditioning: bool = True,
@@ -154,7 +154,7 @@ class GraphDecoder(nn.Module):
 class GraphVAE(nn.Module):
     def __init__(
         self,
-        node_features: int = 6,
+        node_features: int = 8,
         edge_features: int = 4,
         global_features: int = 2,
         hidden_dim: int = 128,

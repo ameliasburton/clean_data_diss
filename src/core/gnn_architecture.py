@@ -14,7 +14,7 @@ from torch_geometric.nn import GINEConv, global_mean_pool, global_max_pool
 class EGFR_GNN_Regressor(nn.Module):
     def __init__(
         self,
-        node_features: int = 6,
+        node_features: int = 8,
         edge_features: int = 5,
         global_features: int = 2,
         hidden_dim: int = 128,
