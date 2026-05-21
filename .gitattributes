@@ -1,1 +1,2 @@
 data/raw/chemical_space/zinc15_subset_raw.smi filter=lfs diff=lfs merge=lfs -text
+data/processed/*.pt filter=lfs diff=lfs merge=lfs -text
